@@ -14,11 +14,13 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface ProgrammingLanguageMapper {
 
-    ProgrammingLanguageMapper INSTANCE = Mappers.getMapper(ProgrammingLanguageMapper.class);
 
     List<GetAllProgrammingLanguageResponseDto> toLanguageDTOs(List<ProgrammingLanguage> languages);
+
     GetProgrammingLanguageByIdResponseDto toLanguageDto(ProgrammingLanguage programmingLanguage);
+
     ProgrammingLanguage toCreateLanguageRequest(CreateProgrammingLanguageRequestDto request);
+
     void update(@MappingTarget ProgrammingLanguage language, UpdateProgrammingLanguageRequestDto request);
 
 }

@@ -15,8 +15,6 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface TechnologyMapper {
 
-    TechnologyMapper INSTANCE = Mappers.getMapper(TechnologyMapper.class);
-
     List<GetAllTechnologyResponseDto> toTechnologyDTOs(List<Technology> technologies);
 
     GetTechnologyByIdResponseDto toTechnologyDto(Technology technology);
