@@ -1,48 +1,53 @@
 package com.example.kodlamaioprogramminglanguage.service.impl;
-import com.example.kodlamaioprogramminglanguage.model.dto.ProgrammingLanguageRequestDto;
-import com.example.kodlamaioprogramminglanguage.model.dto.ProgrammingLanguageResponseDto;
+
+import com.example.kodlamaioprogramminglanguage.model.dto.requestDto.technologyRequestDto.programmingLanguageRequestDto.CreateProgrammingLanguageRequestDto;
+import com.example.kodlamaioprogramminglanguage.model.dto.requestDto.technologyRequestDto.programmingLanguageRequestDto.UpdateProgrammingLanguageRequestDto;
+import com.example.kodlamaioprogramminglanguage.model.dto.responseDto.programmingLanguageResponseDto.GetAllProgrammingLanguageResponseDto;
+import com.example.kodlamaioprogramminglanguage.model.dto.responseDto.programmingLanguageResponseDto.GetProgrammingLanguageByIdResponseDto;
 import com.example.kodlamaioprogramminglanguage.model.entity.ProgrammingLanguage;
 import com.example.kodlamaioprogramminglanguage.model.mapper.ProgrammingLanguageMapper;
 import com.example.kodlamaioprogramminglanguage.repository.ProgrammingLanguageRepository;
 import com.example.kodlamaioprogramminglanguage.service.ProgrammingLanguageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import java.util.List;
-import java.util.stream.Collectors;
 
+import java.util.List;
 
 
 @Service
 @RequiredArgsConstructor
 public class ProgrammingLanguageServiceImpl implements ProgrammingLanguageService {
     private final ProgrammingLanguageRepository programmingLanguageRepository;
+    private final ProgrammingLanguageMapper programmingLanguageMapper;
+
     @Override
-    public List<ProgrammingLanguageResponseDto> getAll() {
-        return programmingLanguageRepository.findAll()
-                .stream()
-                .map(ProgrammingLanguageMapper::toResponseDto)
-                .collect(Collectors.toList());
+    public List<GetAllProgrammingLanguageResponseDto> getAll() {
+        List<ProgrammingLanguage> languages = programmingLanguageRepository.findAll();
+        return programmingLanguageMapper.toLanguageDTOs(languages);
     }
+
     @Override
-    public void create(ProgrammingLanguageRequestDto requestDto) {
-        ProgrammingLanguage programmingLanguage = ProgrammingLanguageMapper.toEntity(requestDto);
+    public void create(CreateProgrammingLanguageRequestDto requestDto) {
+        ProgrammingLanguage programmingLanguage = programmingLanguageMapper.toCreateLanguageRequest(requestDto);
         programmingLanguageRepository.save(programmingLanguage);
     }
 
     @Override
-    public ProgrammingLanguageResponseDto getProgrammingById(Long id) {
+    public GetProgrammingLanguageByIdResponseDto getProgrammingById(Long id) {
         return programmingLanguageRepository.findById(id)
-                .map(programmingLanguage -> ProgrammingLanguageMapper.toResponseDto(programmingLanguage))
+                .map(programmingLanguage -> programmingLanguageMapper.toLanguageDto(programmingLanguage))
                 .orElseThrow(() -> new RuntimeException("id not found"));
     }
 
     @Override
-    public void update(Long id, ProgrammingLanguageRequestDto requestDto) {
+    public UpdateProgrammingLanguageRequestDto update(Long id, UpdateProgrammingLanguageRequestDto requestDto) {
         ProgrammingLanguage programmingLanguage = programmingLanguageRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("No Programming Language found for this id"));
-        programmingLanguage.setName(requestDto.getName());
+                .orElseThrow(() -> new RuntimeException("id not found"));
+
+        programmingLanguageMapper.update(programmingLanguage, requestDto);
         programmingLanguageRepository.save(programmingLanguage);
 
+        return requestDto;
     }
 
     @Override

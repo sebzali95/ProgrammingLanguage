@@ -23,7 +23,7 @@ public class ProgrammingLanguage {
     private String name;
 
 
-    @OneToMany(mappedBy = "programmingLanguages")
+    @OneToMany(mappedBy = "programmingLanguage")
     private Set<Technology> technologies = new HashSet<>();
 
 }

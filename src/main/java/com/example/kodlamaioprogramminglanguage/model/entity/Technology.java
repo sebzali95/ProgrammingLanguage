@@ -17,5 +17,5 @@ public class Technology {
     @NotBlank(message = "name cannot be entered blank")
     private String name;
     @ManyToOne
-    private ProgrammingLanguage programmingLanguages;
+    private ProgrammingLanguage programmingLanguage;
 }

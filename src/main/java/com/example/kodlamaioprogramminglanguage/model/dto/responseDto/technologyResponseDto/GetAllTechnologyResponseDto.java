@@ -1,4 +1,4 @@
-package com.example.kodlamaioprogramminglanguage.model.dto;
+package com.example.kodlamaioprogramminglanguage.model.dto.responseDto.technologyResponseDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,9 +7,12 @@ import lombok.NoArgsConstructor;
 import javax.validation.constraints.NotBlank;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class ProgrammingLanguageRequestDto {
+@AllArgsConstructor
+public class GetAllTechnologyResponseDto {
+
+
+    private Long id;
 
     @NotBlank(message = "name cannot be entered blank")
     private String name;

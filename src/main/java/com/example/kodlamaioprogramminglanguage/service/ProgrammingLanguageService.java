@@ -1,20 +1,21 @@
 package com.example.kodlamaioprogramminglanguage.service;
 
-import com.example.kodlamaioprogramminglanguage.model.dto.ProgrammingLanguageRequestDto;
-import com.example.kodlamaioprogramminglanguage.model.dto.ProgrammingLanguageResponseDto;
-import com.example.kodlamaioprogramminglanguage.model.entity.ProgrammingLanguage;
+import com.example.kodlamaioprogramminglanguage.model.dto.requestDto.technologyRequestDto.programmingLanguageRequestDto.CreateProgrammingLanguageRequestDto;
+import com.example.kodlamaioprogramminglanguage.model.dto.requestDto.technologyRequestDto.programmingLanguageRequestDto.UpdateProgrammingLanguageRequestDto;
+import com.example.kodlamaioprogramminglanguage.model.dto.responseDto.programmingLanguageResponseDto.GetAllProgrammingLanguageResponseDto;
+import com.example.kodlamaioprogramminglanguage.model.dto.responseDto.programmingLanguageResponseDto.GetProgrammingLanguageByIdResponseDto;
 
 import java.util.List;
 
 public interface ProgrammingLanguageService {
 
-    List<ProgrammingLanguageResponseDto> getAll();
+    List<GetAllProgrammingLanguageResponseDto> getAll();
 
-    void create(ProgrammingLanguageRequestDto programmingLanguageRequestDto);
+    void create(CreateProgrammingLanguageRequestDto createProgrammingLanguageRequestDto);
 
-    ProgrammingLanguageResponseDto getProgrammingById(Long id);
+    GetProgrammingLanguageByIdResponseDto getProgrammingById(Long id);
 
-    void update(Long id, ProgrammingLanguageRequestDto programmingLanguageDto);
+    UpdateProgrammingLanguageRequestDto update(Long id, UpdateProgrammingLanguageRequestDto programmingLanguageDto);
 
     void deleteProgrammingLanguageId(Long id);
 }

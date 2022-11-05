@@ -1,7 +1,9 @@
 package com.example.kodlamaioprogramminglanguage.controller;
 
-import com.example.kodlamaioprogramminglanguage.model.dto.ProgrammingLanguageRequestDto;
-import com.example.kodlamaioprogramminglanguage.model.dto.ProgrammingLanguageResponseDto;
+import com.example.kodlamaioprogramminglanguage.model.dto.requestDto.technologyRequestDto.programmingLanguageRequestDto.CreateProgrammingLanguageRequestDto;
+import com.example.kodlamaioprogramminglanguage.model.dto.requestDto.technologyRequestDto.programmingLanguageRequestDto.UpdateProgrammingLanguageRequestDto;
+import com.example.kodlamaioprogramminglanguage.model.dto.responseDto.programmingLanguageResponseDto.GetAllProgrammingLanguageResponseDto;
+import com.example.kodlamaioprogramminglanguage.model.dto.responseDto.programmingLanguageResponseDto.GetProgrammingLanguageByIdResponseDto;
 import com.example.kodlamaioprogramminglanguage.service.ProgrammingLanguageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -17,23 +19,23 @@ public class ProgrammingLanguageController {
 
 
     @GetMapping
-    public List<ProgrammingLanguageResponseDto> getAll() {
+    public List<GetAllProgrammingLanguageResponseDto> getAll() {
         return programmingLanguageService.getAll();
     }
 
     @GetMapping("/{id}")
-    public ProgrammingLanguageResponseDto getProgrammingLanguageById(@PathVariable Long id) {
-        return (programmingLanguageService.getProgrammingById(id));
+    public GetProgrammingLanguageByIdResponseDto getProgrammingLanguageById(@PathVariable Long id) {
+        return programmingLanguageService.getProgrammingById(id);
     }
 
     @PostMapping
-    public void createProgrammingLanguage(@Valid @RequestBody ProgrammingLanguageRequestDto requestDto) {
+    public void createProgrammingLanguage(@Valid @RequestBody CreateProgrammingLanguageRequestDto requestDto) {
         programmingLanguageService.create(requestDto);
     }
 
     @PutMapping("/{id}")
-    public void updateProgrammingLanguage(@Valid @PathVariable Long id, @RequestBody ProgrammingLanguageRequestDto requestDto) {
-        programmingLanguageService.update(id, requestDto);
+    public UpdateProgrammingLanguageRequestDto updateProgrammingLanguage(@Valid @PathVariable Long id, @RequestBody UpdateProgrammingLanguageRequestDto requestDto) {
+      return   programmingLanguageService.update(id, requestDto);
     }
 
     @DeleteMapping("/{id}")

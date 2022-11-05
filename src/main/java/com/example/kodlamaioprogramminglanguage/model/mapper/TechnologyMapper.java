@@ -1,21 +1,28 @@
 package com.example.kodlamaioprogramminglanguage.model.mapper;
 
-import com.example.kodlamaioprogramminglanguage.model.dto.TechnologyRequestDto;
+
+import com.example.kodlamaioprogramminglanguage.model.dto.requestDto.technologyRequestDto.CreateTechnologyRequestDto;
+import com.example.kodlamaioprogramminglanguage.model.dto.requestDto.technologyRequestDto.UpdateTechnologyRequestDto;
+import com.example.kodlamaioprogramminglanguage.model.dto.responseDto.technologyResponseDto.GetAllTechnologyResponseDto;
+import com.example.kodlamaioprogramminglanguage.model.dto.responseDto.technologyResponseDto.GetTechnologyByIdResponseDto;
 import com.example.kodlamaioprogramminglanguage.model.entity.Technology;
-import com.example.kodlamaioprogramminglanguage.model.dto.TechnologyResponseDto;
+import org.mapstruct.Mapper;
+import org.mapstruct.MappingTarget;
+import org.mapstruct.factory.Mappers;
 
-public class TechnologyMapper {
+import java.util.List;
 
-    public static TechnologyResponseDto toResponseDto(Technology technology) {
-        TechnologyResponseDto technologyResponseDto = new TechnologyResponseDto();
-        technologyResponseDto.setId(technology.getId());
-        technologyResponseDto.setName(technology.getName());
-        return technologyResponseDto;
-    }
+@Mapper(componentModel = "spring")
+public interface TechnologyMapper {
 
-    public static Technology toEntity(TechnologyRequestDto technologyRequestDto) {
-        Technology technology = new Technology();
-        technology.setName(technologyRequestDto.getName());
-        return technology;
-    }
+    TechnologyMapper INSTANCE = Mappers.getMapper(TechnologyMapper.class);
+
+    List<GetAllTechnologyResponseDto> toTechnologyDTOs(List<Technology> technologies);
+
+    GetTechnologyByIdResponseDto toTechnologyDto(Technology technology);
+
+    Technology toCreateTechnologyRequest(CreateTechnologyRequestDto createTechnologyRequestDto);
+
+    void update(@MappingTarget Technology technology, UpdateTechnologyRequestDto updateTechnologyRequestDto);
+
 }

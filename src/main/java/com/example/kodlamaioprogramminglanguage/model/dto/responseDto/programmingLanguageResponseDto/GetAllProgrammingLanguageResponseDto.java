@@ -1,4 +1,4 @@
-package com.example.kodlamaioprogramminglanguage.model.dto;
+package com.example.kodlamaioprogramminglanguage.model.dto.responseDto.programmingLanguageResponseDto;
 
 import javax.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -9,7 +9,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProgrammingLanguageResponseDto {
+public class GetAllProgrammingLanguageResponseDto {
+
 
     private Long id;
 

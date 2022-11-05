@@ -1,21 +1,24 @@
 package com.example.kodlamaioprogramminglanguage.model.mapper;
 
-import com.example.kodlamaioprogramminglanguage.model.dto.ProgrammingLanguageResponseDto;
+import com.example.kodlamaioprogramminglanguage.model.dto.requestDto.technologyRequestDto.programmingLanguageRequestDto.CreateProgrammingLanguageRequestDto;
+import com.example.kodlamaioprogramminglanguage.model.dto.requestDto.technologyRequestDto.programmingLanguageRequestDto.UpdateProgrammingLanguageRequestDto;
+import com.example.kodlamaioprogramminglanguage.model.dto.responseDto.programmingLanguageResponseDto.GetAllProgrammingLanguageResponseDto;
+import com.example.kodlamaioprogramminglanguage.model.dto.responseDto.programmingLanguageResponseDto.GetProgrammingLanguageByIdResponseDto;
 import com.example.kodlamaioprogramminglanguage.model.entity.ProgrammingLanguage;
-import com.example.kodlamaioprogramminglanguage.model.dto.ProgrammingLanguageRequestDto;
+import org.mapstruct.Mapper;
+import org.mapstruct.MappingTarget;
+import org.mapstruct.factory.Mappers;
 
-public class ProgrammingLanguageMapper {
+import java.util.List;
 
-    public static ProgrammingLanguageResponseDto toResponseDto(ProgrammingLanguage programmingLanguage) {
-        ProgrammingLanguageResponseDto programmingLanguageResponseDto = new ProgrammingLanguageResponseDto();
-        programmingLanguageResponseDto.setId(programmingLanguage.getId());
-        programmingLanguageResponseDto.setName(programmingLanguage.getName());
-        return programmingLanguageResponseDto;
-    }
+@Mapper(componentModel = "spring")
+public interface ProgrammingLanguageMapper {
 
-    public static ProgrammingLanguage toEntity(ProgrammingLanguageRequestDto programmingLanguageRequestDto) {
-        ProgrammingLanguage programmingLanguage = new ProgrammingLanguage();
-        programmingLanguage.setName(programmingLanguageRequestDto.getName());
-        return programmingLanguage;
-    }
+    ProgrammingLanguageMapper INSTANCE = Mappers.getMapper(ProgrammingLanguageMapper.class);
+
+    List<GetAllProgrammingLanguageResponseDto> toLanguageDTOs(List<ProgrammingLanguage> languages);
+    GetProgrammingLanguageByIdResponseDto toLanguageDto(ProgrammingLanguage programmingLanguage);
+    ProgrammingLanguage toCreateLanguageRequest(CreateProgrammingLanguageRequestDto request);
+    void update(@MappingTarget ProgrammingLanguage language, UpdateProgrammingLanguageRequestDto request);
+
 }
