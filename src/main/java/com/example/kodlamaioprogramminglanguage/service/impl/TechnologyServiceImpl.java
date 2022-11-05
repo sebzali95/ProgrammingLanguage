@@ -35,9 +35,6 @@ public class TechnologyServiceImpl implements TechnologyService {
 
     @Override
     public void create(TechnologyRequestDto requestDto) {
-        ProgrammingLanguage programmingLanguage = new ProgrammingLanguage();
-        programmingLanguage.setName(requestDto.getName());
-        languageRepository.save(programmingLanguage);
         Technology technology = TechnologyMapper.toEntity(requestDto);
         technologyRepository.save(technology);
     }
