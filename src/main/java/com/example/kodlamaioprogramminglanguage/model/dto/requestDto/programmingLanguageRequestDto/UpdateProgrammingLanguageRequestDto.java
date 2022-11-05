@@ -1,4 +1,4 @@
-package com.example.kodlamaioprogramminglanguage.model.dto.requestDto.technologyRequestDto.programmingLanguageRequestDto;
+package com.example.kodlamaioprogramminglanguage.model.dto.requestDto.programmingLanguageRequestDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

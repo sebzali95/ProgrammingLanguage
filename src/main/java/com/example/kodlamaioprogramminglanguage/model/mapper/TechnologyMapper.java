@@ -8,7 +8,6 @@ import com.example.kodlamaioprogramminglanguage.model.dto.responseDto.technology
 import com.example.kodlamaioprogramminglanguage.model.entity.Technology;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
-import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
