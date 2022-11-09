@@ -12,7 +12,7 @@ public interface TechnologyService {
 
     List<GetAllTechnologyResponseDto> getAll();
 
-    void create(CreateTechnologyRequestDto createTechnologyRequestDto);
+    CreateTechnologyRequestDto create(CreateTechnologyRequestDto createTechnologyRequestDto);
 
     UpdateTechnologyRequestDto update(Long id, UpdateTechnologyRequestDto createTechnologyRequestDto);
 

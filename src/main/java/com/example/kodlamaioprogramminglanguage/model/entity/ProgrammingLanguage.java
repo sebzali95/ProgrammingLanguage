@@ -1,7 +1,5 @@
 package com.example.kodlamaioprogramminglanguage.model.entity;
-
 import lombok.*;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.HashSet;

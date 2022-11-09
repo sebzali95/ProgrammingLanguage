@@ -27,9 +27,10 @@ public class ProgrammingLanguageServiceImpl implements ProgrammingLanguageServic
     }
 
     @Override
-    public void create(CreateProgrammingLanguageRequestDto requestDto) {
+    public CreateProgrammingLanguageRequestDto create(CreateProgrammingLanguageRequestDto requestDto) {
         ProgrammingLanguage programmingLanguage = programmingLanguageMapper.toCreateLanguageRequest(requestDto);
         programmingLanguageRepository.save(programmingLanguage);
+        return requestDto;
     }
 
     @Override

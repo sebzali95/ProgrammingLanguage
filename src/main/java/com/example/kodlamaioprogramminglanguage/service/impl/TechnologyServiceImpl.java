@@ -21,7 +21,6 @@ public class TechnologyServiceImpl implements TechnologyService {
 
     private final TechnologyRepository technologyRepository;
     private final ProgrammingLanguageRepository languageRepository;
-
     private final TechnologyMapper technologyMapper;
 
 
@@ -32,13 +31,15 @@ public class TechnologyServiceImpl implements TechnologyService {
     }
 
     @Override
-    public void create(CreateTechnologyRequestDto requestDto) {
+    public CreateTechnologyRequestDto create(CreateTechnologyRequestDto requestDto) {
         Technology technology = technologyMapper.toCreateTechnologyRequest(requestDto);
         ProgrammingLanguage programmingLanguage = languageRepository.findById(requestDto.getLanguageId())
                 .orElseThrow(() -> new RuntimeException("Programming language couldn't find by id: " + requestDto.getLanguageId()));
         technology.setName(requestDto.getName());
         technology.setProgrammingLanguage(programmingLanguage);
         technologyRepository.save(technology);
+
+        return requestDto;
     }
 
     @Override

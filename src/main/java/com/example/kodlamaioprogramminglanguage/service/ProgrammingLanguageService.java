@@ -11,7 +11,7 @@ public interface ProgrammingLanguageService {
 
     List<GetAllProgrammingLanguageResponseDto> getAll();
 
-    void create(CreateProgrammingLanguageRequestDto createProgrammingLanguageRequestDto);
+    CreateProgrammingLanguageRequestDto create(CreateProgrammingLanguageRequestDto createProgrammingLanguageRequestDto);
 
     GetProgrammingLanguageByIdResponseDto getProgrammingById(Long id);
 

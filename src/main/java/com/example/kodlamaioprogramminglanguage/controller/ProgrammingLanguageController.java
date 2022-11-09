@@ -7,6 +7,7 @@ import com.example.kodlamaioprogramminglanguage.model.dto.responseDto.programmin
 import com.example.kodlamaioprogramminglanguage.service.ProgrammingLanguageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
 import javax.validation.Valid;
 import java.util.List;
 
@@ -29,13 +30,13 @@ public class ProgrammingLanguageController {
     }
 
     @PostMapping
-    public void createProgrammingLanguage(@Valid @RequestBody CreateProgrammingLanguageRequestDto requestDto) {
-        programmingLanguageService.create(requestDto);
+    public CreateProgrammingLanguageRequestDto createProgrammingLanguage(@Valid @RequestBody CreateProgrammingLanguageRequestDto requestDto) {
+        return programmingLanguageService.create(requestDto);
     }
 
     @PutMapping("/{id}")
     public UpdateProgrammingLanguageRequestDto updateProgrammingLanguage(@Valid @PathVariable Long id, @RequestBody UpdateProgrammingLanguageRequestDto requestDto) {
-      return   programmingLanguageService.update(id, requestDto);
+        return programmingLanguageService.update(id, requestDto);
     }
 
     @DeleteMapping("/{id}")

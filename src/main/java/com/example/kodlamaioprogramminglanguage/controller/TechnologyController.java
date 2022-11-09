@@ -1,5 +1,4 @@
 package com.example.kodlamaioprogramminglanguage.controller;
-
 import com.example.kodlamaioprogramminglanguage.model.dto.requestDto.technologyRequestDto.CreateTechnologyRequestDto;
 import com.example.kodlamaioprogramminglanguage.model.dto.requestDto.technologyRequestDto.UpdateTechnologyRequestDto;
 import com.example.kodlamaioprogramminglanguage.model.dto.responseDto.technologyResponseDto.GetAllTechnologyResponseDto;
@@ -7,7 +6,6 @@ import com.example.kodlamaioprogramminglanguage.model.dto.responseDto.technology
 import com.example.kodlamaioprogramminglanguage.service.TechnologyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
 import java.util.List;
 
@@ -29,8 +27,8 @@ public class TechnologyController {
     }
 
     @PostMapping
-    public void createTechnology(@Valid @RequestBody CreateTechnologyRequestDto requestDto) {
-        technologyService.create(requestDto);
+    public CreateTechnologyRequestDto createTechnology(@Valid @RequestBody CreateTechnologyRequestDto requestDto) {
+       return technologyService.create(requestDto);
     }
 
     @PutMapping("/{id}")
