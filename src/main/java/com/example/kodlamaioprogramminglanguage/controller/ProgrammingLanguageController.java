@@ -1,9 +1,9 @@
 package com.example.kodlamaioprogramminglanguage.controller;
-
 import com.example.kodlamaioprogramminglanguage.model.dto.requestDto.programmingLanguageRequestDto.CreateProgrammingLanguageRequestDto;
 import com.example.kodlamaioprogramminglanguage.model.dto.requestDto.programmingLanguageRequestDto.UpdateProgrammingLanguageRequestDto;
 import com.example.kodlamaioprogramminglanguage.model.dto.responseDto.programmingLanguageResponseDto.GetAllProgrammingLanguageResponseDto;
 import com.example.kodlamaioprogramminglanguage.model.dto.responseDto.programmingLanguageResponseDto.GetProgrammingLanguageByIdResponseDto;
+import com.example.kodlamaioprogramminglanguage.model.entity.ProgrammingLanguage;
 import com.example.kodlamaioprogramminglanguage.service.ProgrammingLanguageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -30,8 +30,8 @@ public class ProgrammingLanguageController {
     }
 
     @PostMapping
-    public CreateProgrammingLanguageRequestDto createProgrammingLanguage(@Valid @RequestBody CreateProgrammingLanguageRequestDto requestDto) {
-        return programmingLanguageService.create(requestDto);
+    public CreateProgrammingLanguageRequestDto createProgrammingLanguage(@Valid @RequestBody ProgrammingLanguage programmingLanguage) {
+        return programmingLanguageService.create(programmingLanguage);
     }
 
     @PutMapping("/{id}")

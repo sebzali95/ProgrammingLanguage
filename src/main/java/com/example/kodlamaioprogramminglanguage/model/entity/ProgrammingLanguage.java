@@ -10,6 +10,7 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Table
 public class ProgrammingLanguage {
 
     @Id
@@ -18,6 +19,7 @@ public class ProgrammingLanguage {
 
 
     @NotBlank(message = "name cannot be entered blank")
+    @Column(name = "name",unique = true)
     private String name;
 
 

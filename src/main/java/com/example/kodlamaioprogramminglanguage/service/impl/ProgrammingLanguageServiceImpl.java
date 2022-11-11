@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -27,10 +28,10 @@ public class ProgrammingLanguageServiceImpl implements ProgrammingLanguageServic
     }
 
     @Override
-    public CreateProgrammingLanguageRequestDto create(CreateProgrammingLanguageRequestDto requestDto) {
-        ProgrammingLanguage programmingLanguage = programmingLanguageMapper.toCreateLanguageRequest(requestDto);
-        programmingLanguageRepository.save(programmingLanguage);
-        return requestDto;
+    public CreateProgrammingLanguageRequestDto create(ProgrammingLanguage programmingLanguage) {
+        ProgrammingLanguage save = programmingLanguageRepository.save(programmingLanguage);
+        CreateProgrammingLanguageRequestDto createProgrammingLanguageRequestDto = programmingLanguageMapper.toCreateLanguageRequest(save);
+        return createProgrammingLanguageRequestDto;
     }
 
     @Override

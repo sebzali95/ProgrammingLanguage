@@ -18,7 +18,7 @@ public interface ProgrammingLanguageMapper {
 
     GetProgrammingLanguageByIdResponseDto toLanguageDto(ProgrammingLanguage programmingLanguage);
 
-    ProgrammingLanguage toCreateLanguageRequest(CreateProgrammingLanguageRequestDto request);
+    CreateProgrammingLanguageRequestDto toCreateLanguageRequest(ProgrammingLanguage programmingLanguage);
 
     void update(@MappingTarget ProgrammingLanguage language, UpdateProgrammingLanguageRequestDto request);
 

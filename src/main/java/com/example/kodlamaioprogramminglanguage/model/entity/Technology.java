@@ -10,6 +10,7 @@ import javax.validation.constraints.NotBlank;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Table
 public class Technology {
 
     @Id
@@ -17,6 +18,7 @@ public class Technology {
     private Long id;
 
     @NotBlank(message = "name cannot be entered blank")
+    @Column(unique = true)
     private String name;
     @ManyToOne
     private ProgrammingLanguage programmingLanguage;
